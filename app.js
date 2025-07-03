@@ -1,1 +1,1 @@
-console.log('StayCamped site loaded.');
+// JavaScript functionality for interactive UI
