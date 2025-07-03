@@ -1,0 +1,1 @@
+console.log('StayCamped site loaded.');
