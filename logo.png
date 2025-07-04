@@ -1,0 +1,7 @@
+<!-- Logo -->
+<img src="logo.png" alt="StayCamped Logo" class="logo" />
+
+<!-- Hero Section -->
+<div class="hero" style="background-image: url('hero.jpg');">
+  <h1>Arrive. Relax. StayCamped.</h1>
+</div>
