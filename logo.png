@@ -1,7 +1,21 @@
-<!-- Logo -->
-<img src="logo.png" alt="StayCamped Logo" class="logo" />
+<!-- ======================  LOGO  ====================== -->
+<header class="site-header">
+  <!-- Logo image -->
+  <a href="index.html" class="logo-link">
+    <img
+      src="logo.png"          <!-- Make sure the file name matches -->
+      alt="StayCamped Logo"   <!-- Good for accessibility/SEO -->
+      class="site-logo"
+      width="180"             <!-- Adjust size as needed -->
+      height="auto"
+    />
+  </a>
 
-<!-- Hero Section -->
-<div class="hero" style="background-image: url('hero.jpg');">
-  <h1>Arrive. Relax. StayCamped.</h1>
-</div>
+  <!-- Optional navigation -->
+  <nav class="main-nav">
+    <a href="about.html">About</a>
+    <a href="guest-signup.html">Book a Stay</a>
+    <a href="owner-signup.html">List Your Camper</a>
+    <a href="onboard.html">Partners</a>
+  </nav>
+</header>
