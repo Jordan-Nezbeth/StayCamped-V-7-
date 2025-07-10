@@ -10,9 +10,7 @@ header {
   text-align: center;
   padding: 1em;
   background-color: #222;
-}
-.logo {
-  max-width: 150px;
+
 }
 nav a {
   margin: 0 1em;
@@ -42,4 +40,9 @@ footer {
   justify-content: space-between;
   padding: 1rem 2rem;
   background-color: #1e1e1e;
+}
+.logo {
+  width: 360px;
+  display: block;
+  margin: 0 auto;
 }
