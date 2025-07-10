@@ -1,1 +1,67 @@
-<html><head><title>owner-signup.html</title></head><body><h1>Owner Signup.Html</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List Your Camper | StayCamped</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="StayCamped Logo" class="logo" />
+    <h1>List Your Camper</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="guest-signup.html">Book a Stay</a>
+      <a href="onboard.html">Partner Onboarding</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Earn Money While Others Camp</h2>
+      <p>Got a camper sitting around? Put it to work! List your RV or camper on StayCamped and earn passive income while giving others the chance to enjoy the outdoors — no towing, no stress, just easy bookings at real campsites.</p>
+    </section>
+
+    <section class="benefits">
+      <h3>Why List on StayCamped?</h3>
+      <ul>
+        <li>✅ Extra income from your camper</li>
+        <li>✅ Campers stay stationary — no risk from towing</li>
+        <li>✅ You choose the campground and availability</li>
+        <li>✅ We’ll walk you through every step</li>
+      </ul>
+    </section>
+
+    <section class="form">
+      <h3>Get Started</h3>
+      <form action="#" method="post">
+        <label for="name">Your Full Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="camper">Camper Type</label>
+        <input type="text" id="camper" name="camper" placeholder="e.g. 2022 Forest River 32BH" required />
+
+        <label for="campground">Campground or Location</label>
+        <input type="text" id="campground" name="campground" placeholder="e.g. Jenny Wiley State Park" required />
+
+        <label for="notes">Additional Notes (Optional)</label>
+        <textarea id="notes" name="notes"></textarea>
+
+        <button type="submit">Submit Listing Request</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 StayCamped • Secure • Trusted • Support</p>
+  </footer>
+</body>
+</html>
