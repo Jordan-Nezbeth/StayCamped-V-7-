@@ -7,6 +7,61 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+   <section class="owner-signup">
+    <h2>List Your Camper</h2>
+    <form id="camperForm">
+      <label for="owner_name">Your Name:</label>
+      <input type="text" id="owner_name" name="owner_name" required />
+
+      <label for="camper_model">Camper Model:</label>
+      <input type="text" id="camper_model" name="camper_model" required />
+
+      <label for="campground">Campground:</label>
+      <input type="text" id="campground" name="campground" required />
+
+      <label for="site_number">Site Number:</label>
+      <input type="text" id="site_number" name="site_number" />
+
+      <label for="setup_notes">Setup Notes:</label>
+      <textarea id="setup_notes" name="setup_notes"></textarea>
+
+      <button type="submit">Submit Camper</button>
+      <p id="formStatus" style="margin-top:10px;"></p>
+    </form>
+  </section>
+  <script>
+    const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
+    const SUPABASE_KEY = 'YOUR_ANON_KEY';
+
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById('camperForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formStatus = document.getElementById('formStatus');
+
+      const camperData = {
+        owner_name: document.getElementById('owner_name').value,
+        camper_model: document.getElementById('camper_model').value,
+        campground: document.getElementById('campground').value,
+        site_number: document.getElementById('site_number').value,
+        setup_notes: document.getElementById('setup_notes').value,
+      };
+
+      const { error } = await supabase
+        .from('camper_submissions')
+        .insert([camperData]);
+
+      if (error) {
+        formStatus.textContent = '❌ Submission failed. Try again.';
+        console.error(error);
+      } else {
+        formStatus.textContent = '✅ Camper submitted successfully!';
+        document.getElementById('camperForm').reset();
+      }
+    });
+  </script>
+</body>
   <header>
     <img src="logo.png" alt="StayCamped Logo" class="logo" />
     <h1>List Your Camper</h1>
