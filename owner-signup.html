@@ -9,6 +9,43 @@
 </head>
 
 <body>
+<script type="module">
+  // ✅ Replace with your real project URL and anon key from Supabase
+  const SUPABASE_URL = 'https://your-project-url.supabase.co';
+  const SUPABASE_ANON_KEY = 'your-anon-public-key';
+
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const form = document.querySelector('#camper-form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const camperData = {
+      name: document.querySelector('#name').value,
+      email: document.querySelector('#email').value,
+      phone: document.querySelector('#phone').value,
+      camper: document.querySelector('#camper').value,
+      campground: document.querySelector('#campground').value,
+      siteNumber: document.querySelector('#siteNumber').value,
+      setupNotes: document.querySelector('#setupNotes').value,
+    };
+
+    const { data, error } = await supabase
+      .from('camper_signups')
+      .insert([camperData]);
+
+    if (error) {
+      alert('Error submitting form. Please try again.');
+      console.error(error);
+    } else {
+      alert('Thanks for submitting your camper!');
+      form.reset();
+    }
+  });
+</script>
   <header>
     <a href="index.html">
       <img src="logo.png" alt="StayCamped Logo" class="logo" />
