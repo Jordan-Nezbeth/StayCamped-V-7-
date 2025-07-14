@@ -1,0 +1,36 @@
+// submitCamper.js
+
+const SUPABASE_URL = 'https://<your-project-id>.supabase.co';
+const SUPABASE_KEY = '<your-anon-public-key>';
+
+const { createClient } = supabase;
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('camperForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = {
+      owner_name: form.owner_name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      camper_make: form.camper_make.value,
+      camper_model: form.camper_model.value,
+      camper_year: form.camper_year.value,
+      length: form.length.value,
+      sleeps: form.sleeps.value,
+      campground: form.campground.value,
+      additional_notes: form.additional_notes.value,
+    };
+
+    const { error } = await supabaseClient.from('Camper_Listings').insert([formData]);
+
+    if (error) {
+      alert('Error submitting form: ' + error.message);
+    } else {
+      alert('Form submitted successfully!');
+      form.reset();
+    }
+  });
+});
