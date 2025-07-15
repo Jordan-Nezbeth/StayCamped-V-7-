@@ -1,1 +1,134 @@
-<html><head><title>guest-signup.html</title></head><body><h1>Guest Signup.Html</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="StayCamped - Book Your RV Stay Easily"/>
+  <title>Book a Stay | StayCamped</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .form-section {
+      max-width: 700px;
+      margin: 4rem auto;
+      background-color: #1e1e1e;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      color: #fff;
+    }
+    .form-section h1 {
+      text-align: center;
+      color: #FFA500;
+      margin-bottom: 1rem;
+    }
+    .form-section p {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    .form-section label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .form-section input,
+    .form-section select,
+    .form-section textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      background: #2e2e2e;
+      color: white;
+    }
+    .form-section input[type="submit"] {
+      background-color: #FFA500;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: background 0.3s ease;
+    }
+    .form-section input[type="submit"]:hover {
+      background-color: #ff9900;
+    }
+    .success-message {
+      display: none;
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #28a745;
+      border-radius: 8px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="logo.png" alt="StayCamped Logo" class="logo" width="180" />
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="owner-signup.html">List Your Camper</a>
+      <a href="guest-signup.html" class="active">Book a Stay</a>
+      <a href="onboard.html">Partner Onboarding</a>
+    </nav>
+  </header>
+
+  <main class="form-section">
+    <h1>Book Your Stay</h1>
+    <p>You're one step closer to your perfect camping getaway!</p>
+    <form id="guestForm">
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number *</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="campground">Preferred Campground *</label>
+      <select id="campground" name="campground" required>
+        <option value="">Select a campground</option>
+        <option value="Red River RV Park">Red River RV Park</option>
+        <option value="Smoky Mountain Hideaway">Smoky Mountain Hideaway</option>
+        <option value="Lake Cumberland Shores">Lake Cumberland Shores</option>
+      </select>
+
+      <label for="arrival">Arrival Date *</label>
+      <input type="date" id="arrival" name="arrival" required />
+
+      <label for="departure">Departure Date *</label>
+      <input type="date" id="departure" name="departure" required />
+
+      <label for="camper">Camper Size Preference (optional)</label>
+      <input type="text" id="camper" name="camper" placeholder="Example: Bunkhouse, Couples, Fifth Wheel..." />
+
+      <label for="message">Special Requests / Notes</label>
+      <textarea id="message" name="message" rows="4" placeholder="Let us know anything important..."></textarea>
+
+      <input type="submit" value="Let's Go Camping!">
+    </form>
+
+    <div class="success-message" id="successMessage">
+      🎉 You’re officially on your way to the outdoors — we’ll be in touch soon!
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 StayCamped • Secure • Trusted • Support</p>
+  </footer>
+
+  <script>
+    document.getElementById("guestForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("successMessage").style.display = "block";
+      this.reset();
+    });
+  </script>
+</body>
+</html>
