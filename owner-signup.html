@@ -1,128 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>List Your Camper | StayCamped</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-</head>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script src="owner-signup.js"></script>
-
-<body>
-<script type="module">
-  // ✅ Replace with your real project URL and anon key from Supabase
-  const SUPABASE_URL = 'https://your-project-url.supabase.co';
-  const SUPABASE_ANON_KEY = 'your-anon-public-key';
-
-  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  const form = document.querySelector('#camper-form');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const camperData = {
-      name: document.querySelector('#name').value,
-      email: document.querySelector('#email').value,
-      phone: document.querySelector('#phone').value,
-      camper: document.querySelector('#camper').value,
-      campground: document.querySelector('#campground').value,
-      siteNumber: document.querySelector('#siteNumber').value,
-      setupNotes: document.querySelector('#setupNotes').value,
-    };
-
-    const { data, error } = await supabase
-      .from('camper_signups')
-      .insert([camperData]);
-
-    if (error) {
-      alert('Error submitting form. Please try again.');
-      console.error(error);
-    } else {
-      alert('Thanks for submitting your camper!');
-      form.reset();
-    }
-  });
-</script>
-  <header>
-    <a href="index.html">
-      <img src="logo.png" alt="StayCamped Logo" class="logo" />
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="owner-signup.html">List Your Camper</a>
-      <a href="guest-signup.html">Book a Stay</a>
-      <a href="onboard.html">Partner Onboarding</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="owner-signup">
-      <h2>List Your Camper</h2>
-      <p>Complete the form below to list your camper at a campground. Make sure to provide accurate setup notes and site information.</p>
-
-      <form id="camperForm">
-        <label for="owner_name">Your Name:</label>
-        <input type="text" id="owner_name" name="owner_name" required />
-
-        <label for="camper_model">Camper Model:</label>
-        <input type="text" id="camper_model" name="camper_model" required />
-
-        <label for="campground">Campground Name:</label>
-        <input type="text" id="campground" name="campground" required />
-
-        <label for="site_number">Site Number:</label>
-        <input type="text" id="site_number" name="site_number" />
-
-        <label for="setup_notes">Setup Notes:</label>
-        <textarea id="setup_notes" name="setup_notes" rows="4"></textarea>
-
-        <button type="submit">Submit Camper</button>
-        <p id="formStatus" style="margin-top:10px;"></p>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 StayCamped • Secure • Trusted • Support</p>
-  </footer>
-
-  <script>
-    const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
-    const SUPABASE_KEY = 'YOUR_ANON_KEY';
-
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    document.getElementById('camperForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formStatus = document.getElementById('formStatus');
-
-      const camperData = {
-        owner_name: document.getElementById('owner_name').value,
-        camper_model: document.getElementById('camper_model').value,
-        campground: document.getElementById('campground').value,
-        site_number: document.getElementById('site_number').value,
-        setup_notes: document.getElementById('setup_notes').value,
-      };
-
-      const { error } = await supabase
-        .from('camper_submissions')
-        .insert([camperData]);
-
-      if (error) {
-        formStatus.textContent = '❌ Submission failed. Please try again.';
-        console.error(error);
-      } else {
-        formStatus.textContent = '✅ Camper submitted successfully!';
-        document.getElementById('camperForm').reset();
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Become a StayCamped Host - List Your Camper and Earn Passive Income!" />
+    <title>Become a Host | StayCamped</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #1c1c1c;
+        color: #f4f4f4;
+        margin: 0;
+        padding: 0;
       }
-    });
-  </script>
-</body>
+      header {
+        text-align: center;
+        padding: 2rem;
+        background-color: #262626;
+      }
+      header h1 {
+        font-size: 2rem;
+        color: #ffa500;
+        margin: 0;
+      }
+      header p {
+        color: #ccc;
+      }
+      form {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: #2e2e2e;
+        border-radius: 10px;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+      input, select, textarea {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1.5rem;
+        border: none;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #ffa500;
+        color: #1c1c1c;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .success-message {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #00ff88;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Become a Host</h1>
+      <p>Turn your RV into income — list your camper and start earning!</p>
+    </header>
+
+    <form id="hostForm">
+      <label for="ownerName">Your Full Name</label>
+      <input type="text" id="ownerName" name="ownerName" required />
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="camperName">Camper Name or Model</label>
+      <input type="text" id="camperName" name="camperName" required />
+
+      <label for="campground">Select Campground</label>
+      <select id="campground" name="campground" required>
+        <option value="">Choose One</option>
+        <option value="Red River Gorge RV Park">Red River Gorge RV Park</option>
+        <option value="Natural Bridge Campground">Natural Bridge Campground</option>
+        <option value="Daniel Boone RV Sites">Daniel Boone RV Sites</option>
+      </select>
+
+      <label for="siteNumber">Site # or Setup Notes</label>
+      <input type="text" id="siteNumber" name="siteNumber" required />
+
+      <label for="instructions">Special Setup Instructions</label>
+      <textarea id="instructions" name="instructions" rows="4"></textarea>
+
+      <button type="submit">Submit Listing</button>
+      <div class="success-message" id="successMsg" style="display:none;">
+        🚐 You're officially on your way to hosting!
+      </div>
+    </form>
+
+    <script>
+      const form = document.getElementById('hostForm');
+      const successMsg = document.getElementById('successMsg');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        form.reset();
+        successMsg.style.display = 'block';
+      });
+    </script>
+  </body>
 </html>
