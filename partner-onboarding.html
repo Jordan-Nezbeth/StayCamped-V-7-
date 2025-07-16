@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Partner with StayCamped to list your rental fleet and earn more!" />
+  <title>Part
+ner Onboarding | StayCamped</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1c1c1c;
+      color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #262626;
+    }
+    header img {
+      width: 180px;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      color: #ffa500;
+      margin: 0;
+    }
+    header p {
+      color: #ccc;
+    }
+    form {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #2e2e2e;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #ffa500;
+      color: #1c1c1c;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .success-message {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #00ff88;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="Untitled design.png" alt="StayCamped Logo" />
+    </a>
+    <h1>Partner Onboarding</h1>
+    <p>List your fleet of RVs with StayCamped and earn more revenue, easily.</p>
+  </header>
+
+  <form id="partnerForm">
+    <label for="businessName">Business Name</label>
+    <input type="text" id="businessName" name="businessName" required />
+
+    <label for="contactName">Primary Contact Name</label>
+    <input type="text" id="contactName" name="contactName" required />
+
+    <label for="email">Business Email</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <label for="fleetSize">Number of Units in Fleet</label>
+    <input type="number" id="fleetSize" name="fleetSize" required />
+
+    <label for="locations">List Campgrounds You Operate In</label>
+    <textarea id="locations" name="locations" rows="4" placeholder="e.g., Red River Gorge RV Park, Daniel Boone State Park..."></textarea>
+
+    <label for="setupDetails">Setup & Delivery Details</label>
+    <textarea id="setupDetails" name="setupDetails" rows="4"></textarea>
+
+    <label for="website">Website or Social (optional)</label>
+    <input type="url" id="website" name="website" />
+
+    <button type="submit">Submit Partnership Request</button>
+    <div class="success-message" id="successMsg" style="display:none;">
+      🏕️ Thanks for joining our network — we’ll be in touch soon!
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById('partnerForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      form.reset();
+      successMsg.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
