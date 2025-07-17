@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Portal - StayCamped</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #1a1a1a;
+      background: #0f0f0f;
       color: #fff;
     }
     header {
-      background: #262626;
+      background: #1c1c1c;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -23,7 +23,7 @@
       height: 50px;
     }
     nav a {
-      color: #ffa500;
+      color: #ffb700;
       margin-left: 1.5rem;
       text-decoration: none;
       font-weight: bold;
@@ -32,29 +32,35 @@
       max-width: 1200px;
       margin: 2rem auto;
       padding: 1rem;
-      background: #2a2a2a;
+      background: #1e1e1e;
       border-radius: 8px;
     }
     h2, h3 {
-      color: #ffa500;
+      color: #ffb700;
     }
     .section {
       margin-top: 2rem;
     }
     .card {
-      background: #333;
+      background: #2a2a2a;
       padding: 1rem;
       border-radius: 5px;
       margin-bottom: 1rem;
     }
+    .card h3 {
+      margin: 0 0 0.5rem 0;
+    }
     .btn {
-      background: #ffa500;
-      color: #1a1a1a;
+      background: #ffb700;
+      color: #000;
       border: none;
       padding: 0.5rem 1.5rem;
       border-radius: 4px;
       cursor: pointer;
-      margin-right: 0.5rem;
+      margin-top: 1rem;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
@@ -62,7 +68,7 @@
   <header>
     <a href="index.html"><img src="logo.png" alt="StayCamped Logo" /></a>
     <nav>
-      <a href="admin-portal.html">Dashboard</a>
+      <a href="#">Dashboard</a>
       <a href="#">Manage Listings</a>
       <a href="#">Users</a>
       <a href="#">Support</a>
@@ -71,44 +77,47 @@
   </header>
 
   <div class="dashboard">
-    <h2>Welcome Admin!</h2>
+    <h2>Welcome, StayCamped Admin</h2>
 
     <div class="section">
-      <h3>Platform Overview</h3>
+      <h3>Quick Stats</h3>
       <div class="card">
-        <p><strong>Total Listings:</strong> 48</p>
-        <p><strong>Total Bookings:</strong> 132</p>
-        <p><strongNew Users This Week:</strong> 12</p>
-        <p><strong>Revenue This Month:</strong> $18,920.00</p>
+        <p><strong>New Listings Pending:</strong> 5</p>
+        <p><strong>Total Revenue This Month:</strong> $18,740</p>
+        <p><strong>New Host Signups:</strong> 8</p>
       </div>
     </div>
 
     <div class="section">
-      <h3>Pending Listings for Approval</h3>
+      <h3>Recent Activity</h3>
       <div class="card">
-        <h3>2022 Keystone Hideout</h3>
-        <p>Host: Sarah L., Location: Lake Malone</p>
+        <h3>New Camper: 2023 Winnebago Voyage</h3>
+        <p>Submitted by: camperworld23</p>
         <button class="btn">Approve</button>
         <button class="btn">Reject</button>
       </div>
       <div class="card">
-        <h3>2020 Jayco Jay Flight</h3>
-        <p>Host: Mike D., Location: Cave Run Lake</p>
-        <button class="btn">Approve</button>
-        <button class="btn">Reject</button>
+        <h3>Issue: Broken A/C at Lake Shelby</h3>
+        <p>Reported by: guest456</p>
+        <button class="btn">View Report</button>
       </div>
     </div>
 
     <div class="section">
       <h3>Admin Tools</h3>
       <ul>
-        <li>💳 Monitor Stripe Payouts</li>
-        <li>🛑 Review Reported Listings</li>
-        <li>📬 Support Inbox</li>
-        <li>📊 Analytics Dashboard</li>
-        <li>🛠️ System Settings</li>
+        <li>💸 Stripe Payout Status</li>
+        <li>📊 Full Earnings Dashboard</li>
+        <li>🧾 Export Bookings (CSV)</li>
+        <li>✅ Approve / Reject Listings</li>
+        <li>📬 Message Guests & Hosts</li>
+        <li>📍 Add Manual Reservation</li>
       </ul>
     </div>
   </div>
 </body>
 </html>
+
+     
+     
+       
