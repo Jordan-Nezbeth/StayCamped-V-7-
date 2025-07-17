@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StayCamped Portal</title>
+  <title>Guest Portal - StayCamped</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -28,15 +28,6 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .portal-login-btn {
-      background-color: #ffa500;
-      color: #1a1a1a;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      margin-left: auto;
-    }
     .dashboard {
       max-width: 1200px;
       margin: 2rem auto;
@@ -44,7 +35,7 @@
       background: #2a2a2a;
       border-radius: 8px;
     }
-    h2 {
+    h2, h3 {
       color: #ffa500;
     }
     .section {
@@ -73,61 +64,54 @@
 <body>
   <header>
     <a href="index.html"><img src="logo.png" alt="StayCamped Logo" /></a>
-    <a href="portal-login.html" class="portal-login-btn">Portal Login</a>
+    <nav>
+      <a href="book-a-stay.html">Book a Stay</a>
+      <a href="guest-portal.html">My Trips</a>
+      <a href="#">Support</a>
+      <a href="#">Logout</a>
+    </nav>
   </header>
 
   <div class="dashboard">
-    <h2>Welcome, [User Name]!</h2>
+    <h2>Welcome Back, [Guest Name]!</h2>
 
     <div class="section">
-      <h3>Quick Stats</h3>
+      <h3>Upcoming Trips</h3>
       <div class="card">
-        <p><strong>Active Listings:</strong> 3</p>
-        <p><strong>Pending Bookings:</strong> 2</p>
-        <p><strong>Total Earnings:</strong> $5,412.00</p>
+        <h3>Yatesville Lake Adventure</h3>
+        <p>Date: Aug 18–20, 2025</p>
+        <p>Camper: 2021 Jayco Bunkhouse</p>
+        <p>Status: Confirmed ✅</p>
+        <button class="btn">View Details</button>
       </div>
     </div>
 
     <div class="section">
-      <h3>Recent Booking Requests</h3>
+      <h3>Messages</h3>
       <div class="card">
-        <h3>Red River Gorge - Camper #1</h3>
-        <p>Requested for: Aug 10 - Aug 12</p>
-        <button class="btn">Approve</button>
-        <button class="btn">Decline</button>
-      </div>
-      <div class="card">
-        <h3>Lake Cumberland Retreat</h3>
-        <p>Requested for: Aug 15 - Aug 17</p>
-        <button class="btn">Approve</button>
-        <button class="btn">Decline</button>
+        <h3>From Host - Forest River Wildwood</h3>
+        <p>"Looking forward to hosting you! Let me know if you need anything before your trip."</p>
+        <button class="btn">Reply</button>
       </div>
     </div>
 
     <div class="section">
-      <h3>Your Campers</h3>
+      <h3>Booking History</h3>
       <div class="card">
-        <h3>2021 Jayco Bunkhouse</h3>
-        <p>Location: Yatesville Lake</p>
-        <p>Price: $129/night</p>
-        <button class="btn">Edit Listing</button>
-      </div>
-      <div class="card">
-        <h3>2020 Forest River Wildwood</h3>
-        <p>Location: Cave Run Lake</p>
-        <p>Price: $109/night</p>
-        <button class="btn">Edit Listing</button>
+        <h3>Red River Gorge • July 2025</h3>
+        <p>2020 Forest River Wildwood</p>
+        <p>Total: $289.00</p>
+        <button class="btn">Rebook</button>
       </div>
     </div>
 
     <div class="section">
-      <h3>Platform Tools</h3>
+      <h3>Guest Tools</h3>
       <ul>
-        <li>✅ Stripe Payout Status</li>
-        <li>📩 Support Messages</li>
-        <li>📆 Booking Calendar</li>
-        <li>📢 Marketing Boost Tools</li>
-        <li>📊 Listing Performance</li>
+        <li>📍 Trip Itinerary</li>
+        <li>📩 Host Messages</li>
+        <li>⭐ Rate Your Stay</li>
+        <li>📞 Contact Support</li>
       </ul>
     </div>
   </div>
