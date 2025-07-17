@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guest Portal - StayCamped</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Portal - StayCamped</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -48,9 +47,6 @@
       border-radius: 5px;
       margin-bottom: 1rem;
     }
-    .card h3 {
-      margin: 0 0 0.5rem 0;
-    }
     .btn {
       background: #ffa500;
       color: #1a1a1a;
@@ -58,7 +54,7 @@
       padding: 0.5rem 1.5rem;
       border-radius: 4px;
       cursor: pointer;
-      margin-top: 1rem;
+      margin-right: 0.5rem;
     }
   </style>
 </head>
@@ -66,58 +62,53 @@
   <header>
     <a href="index.html"><img src="logo.png" alt="StayCamped Logo" /></a>
     <nav>
-      <a href="book-a-stay.html">Book a Stay</a>
-      <a href="guest-portal.html">My Trips</a>
+      <a href="admin-portal.html">Dashboard</a>
+      <a href="#">Manage Listings</a>
+      <a href="#">Users</a>
       <a href="#">Support</a>
       <a href="#">Logout</a>
     </nav>
   </header>
 
   <div class="dashboard">
-    <h2>Welcome Back, [Guest Name]!</h2>
+    <h2>Welcome Admin!</h2>
 
     <div class="section">
-      <h3>Upcoming Trips</h3>
+      <h3>Platform Overview</h3>
       <div class="card">
-        <h3>Yatesville Lake Adventure</h3>
-        <p>Date: Aug 18–20, 2025</p>
-        <p>Camper: 2021 Jayco Bunkhouse</p>
-        <p>Status: Confirmed ✅</p>
-        <button class="btn">View Details</button>
+        <p><strong>Total Listings:</strong> 48</p>
+        <p><strong>Total Bookings:</strong> 132</p>
+        <p><strongNew Users This Week:</strong> 12</p>
+        <p><strong>Revenue This Month:</strong> $18,920.00</p>
       </div>
     </div>
 
     <div class="section">
-      <h3>Messages</h3>
+      <h3>Pending Listings for Approval</h3>
       <div class="card">
-        <h3>From Host - Forest River Wildwood</h3>
-        <p>"Looking forward to hosting you! Let me know if you need anything before your trip."</p>
-        <button class="btn">Reply</button>
+        <h3>2022 Keystone Hideout</h3>
+        <p>Host: Sarah L., Location: Lake Malone</p>
+        <button class="btn">Approve</button>
+        <button class="btn">Reject</button>
+      </div>
+      <div class="card">
+        <h3>2020 Jayco Jay Flight</h3>
+        <p>Host: Mike D., Location: Cave Run Lake</p>
+        <button class="btn">Approve</button>
+        <button class="btn">Reject</button>
       </div>
     </div>
 
     <div class="section">
-      <h3>Booking History</h3>
-      <div class="card">
-        <h3>Red River Gorge • July 2025</h3>
-        <p>2020 Forest River Wildwood</p>
-        <p>Total: $289.00</p>
-        <button class="btn">Rebook</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Guest Tools</h3>
+      <h3>Admin Tools</h3>
       <ul>
-        <li>📍 Trip Itinerary</li>
-        <li>📩 Host Messages</li>
-        <li>⭐ Rate Your Stay</li>
-        <li>📞 Contact Support</li>
+        <li>💳 Monitor Stripe Payouts</li>
+        <li>🛑 Review Reported Listings</li>
+        <li>📬 Support Inbox</li>
+        <li>📊 Analytics Dashboard</li>
+        <li>🛠️ System Settings</li>
       </ul>
     </div>
   </div>
 </body>
-</html>     
-  
-    
-     
+</html>
