@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StayCamped Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #1a1a1a;
+      color: #fff;
+    }
+    header {
+      background: #262626;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 50px;
+    }
+    nav a {
+      color: #ffa500;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .dashboard {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #2a2a2a;
+      border-radius: 8px;
+    }
+    h2 {
+      color: #ffa500;
+    }
+    .section {
+      margin-top: 2rem;
+    }
+    .card {
+      background: #333;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      margin: 0 0 0.5rem 0;
+    }
+    .btn {
+      background: #ffa500;
+      color: #1a1a1a;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="logo.png" alt="StayCamped Logo" /></a>
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Messages</a>
+      <a href="#">Bookings</a>
+      <a href="#">My Listings</a>
+      <a href="#">Logout</a>
+    </nav>
+  </header>
+
+  <div class="dashboard">
+    <h2>Welcome, [User Name]!</h2>
+
+    <div class="section">
+      <h3>Quick Stats</h3>
+      <div class="card">
+        <p><strong>Active Listings:</strong> 3</p>
+        <p><strong>Pending Bookings:</strong> 2</p>
+        <p><strong>Total Earnings:</strong> $5,412.00</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Recent Booking Requests</h3>
+      <div class="card">
+        <h3>Red River Gorge - Camper #1</h3>
+        <p>Requested for: Aug 10 - Aug 12</p>
+        <button class="btn">Approve</button>
+        <button class="btn">Decline</button>
+      </div>
+      <div class="card">
+        <h3>Lake Cumberland Retreat</h3>
+        <p>Requested for: Aug 15 - Aug 17</p>
+        <button class="btn">Approve</button>
+        <button class="btn">Decline</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Your Campers</h3>
+      <div class="card">
+        <h3>2021 Jayco Bunkhouse</h3>
+        <p>Location: Yatesville Lake</p>
+        <p>Price: $129/night</p>
+        <button class="btn">Edit Listing</button>
+      </div>
+      <div class="card">
+        <h3>2020 Forest River Wildwood</h3>
+        <p>Location: Cave Run Lake</p>
+        <p>Price: $109/night</p>
+        <button class="btn">Edit Listing</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Platform Tools</h3>
+      <ul>
+        <li>✅ Stripe Payout Status</li>
+        <li>📩 Support Messages</li>
+        <li>📆 Booking Calendar</li>
+        <li>📢 Marketing Boost Tools</li>
+        <li>📊 Listing Performance</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
