@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Stay | StayCamped</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #1a1a1a;
+      color: #fff;
+    }
+    header {
+      background: #262626;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 50px;
+    }
+    nav a {
+      color: #ffa500;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background: url('hero.jpg') no-repeat center center;
+      background-size: cover;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #ffa500;
+      text-shadow: 1px 1px 4px #000;
+    }
+    .content {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .intro {
+      background: #2a2a2a;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .intro h2 {
+      color: #ffa500;
+      margin-bottom: 1rem;
+    }
+    .intro p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .btn {
+      background: #ffa500;
+      color: #1a1a1a;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="logo.png" alt="StayCamped Logo" /></a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="owner-signup.html">List Your Camper</a>
+      <a href="book-a-stay.html">Book a Stay</a>
+      <a href="partner-onboarding.html">Partner Onboarding</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Find Your Perfect Campsite</h1>
+  </div>
+
+  <div class="content">
+    <div class="intro">
+      <h2>Book. Arrive. Relax.</h2>
+      <p>
+        Skip the towing and setup stress. With StayCamped, your camper is already there waiting — stocked, leveled, and ready for adventure. Just show up, unpack, and enjoy.
+      </p>
+      <p>
+        Whether you're planning a lake weekend, a family getaway, or just need some nature in your life — we've got the camper for you.
+      </p>
+      <button class="btn" onclick="window.location.href='guest-signup.html'">Get Started</button>
+    </div>
+  </div>
+</body>
+</html>
+
