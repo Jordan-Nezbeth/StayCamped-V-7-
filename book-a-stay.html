@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book a Stay - StayCamped</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     body {
       margin: 0;
@@ -109,6 +111,11 @@
       padding: 3rem 1rem;
       background: #262626;
     }
+    #map {
+      height: 500px;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -149,6 +156,11 @@
       <input type="text" placeholder="Campground (optional)">
       <button class="cta-btn">Search</button>
     </div>
+  </section>
+
+  <section class="section">
+    <h2>🗺️ Campground Map</h2>
+    <div id="map"></div>
   </section>
 
   <section class="section">
@@ -200,5 +212,25 @@
     <h2>“Let the campfire stories begin.”</h2>
     <button class="cta-btn">📍 Find Your Stay Now</button>
   </section>
+
+  <script>
+    var map = L.map('map').setView([37.8, -96], 4); // Centered in USA
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Sample campground pins (can replace later with Supabase listings)
+    const campgrounds = [
+      { name: "Red River Gorge", lat: 37.82, lng: -83.68 },
+      { name: "Yatesville Lake", lat: 38.04, lng: -82.72 },
+      { name: "Cave Run Lake", lat: 38.13, lng: -83.51 }
+    ];
+
+    campgrounds.forEach(camp => {
+      L.marker([camp.lat, camp.lng]).addTo(map)
+        .bindPopup(`<strong>${camp.name}</strong>`);
+    });
+  </script>
 </body>
 </html>
