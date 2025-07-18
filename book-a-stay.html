@@ -3,67 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Your Stay | StayCamped</title>
+  <title>Book a Stay - StayCamped</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      background: #1a1a1a;
-      color: white;
-      font-family: Arial, sans-serif;
       margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
     }
     header {
       background: #262626;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
     }
     header img {
-      height: 60px;
+      height: 50px;
     }
     nav a {
       color: #ffa500;
+      margin-left: 1.5rem;
       text-decoration: none;
-      margin-left: 1rem;
       font-weight: bold;
     }
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: #2a2a2a;
-      padding: 2rem;
-      border-radius: 8px;
-    }
-    h1 {
+    .hero {
+      background: url('campground-hero.jpg') center/cover no-repeat;
+      padding: 6rem 2rem;
       text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       color: #ffa500;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1.5rem;
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
-    input, button {
-      padding: 0.75rem;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: none;
-    }
-    input {
-      background: #444;
-      color: white;
-    }
-    button {
-      background: #ffa500;
+    .cta-btn {
+      background-color: #ffa500;
       color: #1a1a1a;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
+      border-radius: 5px;
     }
-    .info-text {
+    .section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .features, .steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
+    }
+    .feature, .step {
+      background: #2a2a2a;
+      padding: 1rem;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 220px;
+    }
+    .section h2 {
+      color: #ffa500;
+      margin-bottom: 1rem;
+    }
+    .testimonial, .listing-card {
+      background: #333;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .listing-card img {
+      width: 100%;
+      border-radius: 4px;
+    }
+    .search-bar {
+      background: #2a2a2a;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    .search-bar input, .search-bar select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 4px;
+    }
+    .secure {
       text-align: center;
-      margin-top: 1rem;
+      padding: 2rem;
+      background: #2f2f2f;
+      border-radius: 8px;
+    }
+    .bottom-cta {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #262626;
     }
   </style>
 </head>
@@ -72,32 +116,89 @@
     <a href="index.html"><img src="logo.png" alt="StayCamped Logo"></a>
     <nav>
       <a href="book-a-stay.html">Book a Stay</a>
-      <a href="become-a-host.html">Become a Host</a>
-      <a href="login.html">Portal Login</a>
+      <a href="owner-signup.html">Become a Host</a>
+      <a href="guest-portal.html">Login</a>
     </nav>
   </header>
 
-  <div class="container">
-    <h1>Book Your Stay</h1>
-    <form id="booking-form">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <input type="date" id="start-date" required>
-      <input type="date" id="end-date" required>
-      <input type="text" id="campground" placeholder="Campground Name" required>
-      <button type="submit">Book Now</button>
-    </form>
-    <p class="info-text">Secure payments powered by Stripe</p>
+  <div class="hero">
+    <h1>Don’t Tow. Don’t Stress. Just Arrive. Relax. StayCamped.</h1>
+    <p>Book a fully set-up camper at your favorite campground today.</p>
+    <button class="cta-btn">🔍 Search Stays</button>
   </div>
 
-  <script>
-    const bookingForm = document.getElementById('booking-form');
-    bookingForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+  <section class="section">
+    <h2>✅ Why StayCamped?</h2>
+    <div class="features">
+      <div class="feature">✅ No towing required</div>
+      <div class="feature">✅ Campers delivered and set up for you</div>
+      <div class="feature">✅ Stay at real campgrounds</div>
+      <div class="feature">✅ Affordable, easy, memorable</div>
+    </div>
+    <p>Whether you’re a first-timer or a seasoned adventurer, StayCamped makes camping easy, accessible, and unforgettable — no truck or setup needed.</p>
+  </section>
 
-      // Simulate redirect to Stripe Checkout
-      window.location.href = 'https://buy.stripe.com/test_bIY2bl90K23weHCfYZ';
-    });
-  </script>
+  <section class="section">
+    <h2>📍 Search Listings by Location</h2>
+    <div class="search-bar">
+      <input type="text" placeholder="Location or Zip Code">
+      <input type="date" placeholder="Arrival Date">
+      <input type="date" placeholder="Departure Date">
+      <input type="number" placeholder="Number of Guests">
+      <select><option>Pet Friendly?</option><option>Yes</option><option>No</option></select>
+      <input type="text" placeholder="Campground (optional)">
+      <button class="cta-btn">Search</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🌟 Featured Campers & Experiences</h2>
+    <div class="listing-card">
+      <img src="camper1.jpg" alt="Camper">
+      <h3>2021 Jayco Bunkhouse – Yatesville Lake</h3>
+      <p>$129/night • ⭐ 4.9</p>
+      <button class="btn">View Details</button>
+    </div>
+    <div class="listing-card">
+      <img src="camper2.jpg" alt="Camper">
+      <h3>2020 Forest River Wildwood – Red River Gorge</h3>
+      <p>$109/night • ⭐ 4.8</p>
+      <button class="btn">View Details</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>💬 What Guests Are Saying</h2>
+    <div class="testimonial">
+      <p>“It was the easiest trip we’ve ever taken. Showed up, campfire was ready, fridge was cold, beds were made!” – Ashley M.</p>
+    </div>
+    <div class="testimonial">
+      <p>“I always wanted to take the kids camping but didn’t know how. StayCamped made it happen.” – Travis H.</p>
+    </div>
+  </section>
+
+  <section class="section steps">
+    <div class="step">
+      <h3>1. Find Your Camper</h3>
+      <p>Choose from locations, dates, and preferences.</p>
+    </div>
+    <div class="step">
+      <h3>2. Book Online</h3>
+      <p>We handle the setup. You relax.</p>
+    </div>
+    <div class="step">
+      <h3>3. Arrive & Enjoy</h3>
+      <p>Everything’s ready. Just show up and unwind.</p>
+    </div>
+  </section>
+
+  <section class="secure">
+    <p>🔐 Secure checkout powered by <strong>Stripe</strong>. No hidden fees.</p>
+  </section>
+
+  <section class="bottom-cta">
+    <h2>“Let the campfire stories begin.”</h2>
+    <button class="cta-btn">📍 Find Your Stay Now</button>
+  </section>
 </body>
 </html>
