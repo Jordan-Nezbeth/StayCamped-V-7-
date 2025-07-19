@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portal Login - StayCamped</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .logo {
+      max-width: 220px;
+      margin: 0 auto 2rem auto;
+    }
+
+    h1 {
+      color: #ffa500;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .button-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .portal-button {
+      background-color: #ffa500;
+      color: #1a1a1a;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .portal-button:hover {
+      background-color: #ffb733;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html">
+    <img src="logo.png" alt="StayCamped Logo" class="logo" />
+  </a>
+
+  <h1>Select Your Portal</h1>
+
+  <div class="button-grid">
+    <a href="guest-portal.html" class="portal-button">🧭 Guest Portal</a>
+    <a href="host-portal.html" class="portal-button">🏕️ Host Portal</a>
+    <a href="admin-portal.html" class="portal-button">🔐 Admin Portal</a>
+    <p class="note">* Admin access is for StayCamped staff only.</p>
+  </div>
+</body>
+</html>
