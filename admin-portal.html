@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Portal - StayCamped</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #0f0f0f;
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
       color: #fff;
     }
     header {
-      background: #1c1c1c;
+      background: #262626;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -23,7 +23,7 @@
       height: 50px;
     }
     nav a {
-      color: #ffb700;
+      color: #ffa500;
       margin-left: 1.5rem;
       text-decoration: none;
       font-weight: bold;
@@ -32,29 +32,26 @@
       max-width: 1200px;
       margin: 2rem auto;
       padding: 1rem;
-      background: #1e1e1e;
+      background: #2a2a2a;
       border-radius: 8px;
     }
     h2, h3 {
-      color: #ffb700;
+      color: #ffa500;
     }
     .section {
       margin-top: 2rem;
     }
     .card {
-      background: #2a2a2a;
+      background: #333;
       padding: 1rem;
       border-radius: 5px;
       margin-bottom: 1rem;
     }
-    .card h3 {
-      margin: 0 0 0.5rem 0;
-    }
     .btn {
-      background: #ffb700;
-      color: #000;
+      background: #ffa500;
+      color: #1a1a1a;
       border: none;
-      padding: 0.5rem 1.5rem;
+      padding: 0.5rem 1rem;
       border-radius: 4px;
       cursor: pointer;
       margin-top: 1rem;
@@ -68,50 +65,62 @@
   <header>
     <a href="index.html"><img src="logo.png" alt="StayCamped Logo" /></a>
     <nav>
-      <a href="#">Dashboard</a>
-      <a href="#">Manage Listings</a>
-      <a href="#">Users</a>
-      <a href="#">Support</a>
+      <a href="portal-landing.html">Back to Portal</a>
       <a href="#">Logout</a>
     </nav>
   </header>
 
   <div class="dashboard">
-    <h2>Welcome, StayCamped Admin</h2>
+    <h2>Welcome, Admin!</h2>
 
     <div class="section">
-      <h3>Quick Stats</h3>
+      <h3>Platform Overview</h3>
       <div class="card">
-        <p><strong>New Listings Pending:</strong> 5</p>
-        <p><strong>Total Revenue This Month:</strong> $18,740</p>
-        <p><strong>New Host Signups:</strong> 8</p>
+        <p><strong>Total Guests:</strong> 124</p>
+        <p><strong>Total Hosts:</strong> 58</p>
+        <p><strong>Total Bookings:</strong> 217</p>
+        <p><strong>Gross Revenue:</strong> $32,790.00</p>
       </div>
     </div>
 
     <div class="section">
-      <h3>Recent Activity</h3>
+      <h3>Host Listings</h3>
       <div class="card">
-        <h3>New Camper: 2023 Winnebago Voyage</h3>
-        <p>Submitted by: camperworld23</p>
-        <button class="btn">Approve</button>
-        <button class="btn">Reject</button>
+        <p><strong>Host:</strong> john@camperlife.com</p>
+        <p><strong>Camper:</strong> 2021 Jayco Bunkhouse - Red River Gorge</p>
+        <button class="btn">View Listing</button>
       </div>
       <div class="card">
-        <h3>Issue: Broken A/C at Lake Shelby</h3>
-        <p>Reported by: guest456</p>
-        <button class="btn">View Report</button>
+        <p><strong>Host:</strong> travelmom@gmail.com</p>
+        <p><strong>Camper:</strong> 2020 Wildwood - Lake Cumberland</p>
+        <button class="btn">View Listing</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Recent Bookings</h3>
+      <div class="card">
+        <p><strong>Guest:</strong> ashley.m@email.com</p>
+        <p><strong>Location:</strong> Cave Run Lake</p>
+        <p><strong>Dates:</strong> Aug 10 - Aug 12</p>
+        <p><strong>Status:</strong> Confirmed</p>
+      </div>
+      <div class="card">
+        <p><strong>Guest:</strong> huntercamping@aol.com</p>
+        <p><strong>Location:</strong> Breaks Interstate Park</p>
+        <p><strong>Dates:</strong> Aug 15 - Aug 17</p>
+        <p><strong>Status:</strong> Pending</p>
       </div>
     </div>
 
     <div class="section">
       <h3>Admin Tools</h3>
       <ul>
-        <li>💸 Stripe Payout Status</li>
-        <li>📊 Full Earnings Dashboard</li>
-        <li>🧾 Export Bookings (CSV)</li>
-        <li>✅ Approve / Reject Listings</li>
-        <li>📬 Message Guests & Hosts</li>
-        <li>📍 Add Manual Reservation</li>
+        <li>📊 User Management (coming soon)</li>
+        <li>💬 Review Flagged Messages</li>
+        <li>📆 View All Booking Calendars</li>
+        <li>💰 Stripe Payout Reports</li>
+        <li>🔧 Platform Settings</li>
       </ul>
     </div>
   </div>
