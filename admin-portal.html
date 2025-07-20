@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Portal - StayCamped</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #1a1a1a;
+      background-color: #1a1a1a;
       color: #fff;
     }
     header {
-      background: #262626;
+      background-color: #262626;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -22,24 +22,19 @@
     header img {
       height: 50px;
     }
-    nav a {
-      color: #ffa500;
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .dashboard {
+    .admin-dashboard {
       max-width: 1200px;
       margin: 2rem auto;
       padding: 1rem;
-      background: #2a2a2a;
-      border-radius: 8px;
     }
-    h2, h3 {
+    h2 {
       color: #ffa500;
     }
     .section {
       margin-top: 2rem;
+      background: #2a2a2a;
+      padding: 1rem;
+      border-radius: 8px;
     }
     .card {
       background: #333;
@@ -47,86 +42,98 @@
       border-radius: 5px;
       margin-bottom: 1rem;
     }
+    .card h3 {
+      margin: 0 0 0.5rem 0;
+    }
     .btn {
       background: #ffa500;
       color: #1a1a1a;
       border: none;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1.5rem;
       border-radius: 4px;
       cursor: pointer;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
-    ul li {
-      margin-bottom: 0.5rem;
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 0.5rem 0;
     }
   </style>
 </head>
 <body>
   <header>
     <a href="index.html"><img src="logo.png" alt="StayCamped Logo" /></a>
-    <nav>
-      <a href="portal-landing.html">Back to Portal</a>
-      <a href="#">Logout</a>
-    </nav>
+    <h2>Admin Portal</h2>
   </header>
 
-  <div class="dashboard">
-    <h2>Welcome, Admin!</h2>
-
+  <div class="admin-dashboard">
     <div class="section">
-      <h3>Platform Overview</h3>
-      <div class="card">
-        <p><strong>Total Guests:</strong> 124</p>
-        <p><strong>Total Hosts:</strong> 58</p>
-        <p><strong>Total Bookings:</strong> 217</p>
-        <p><strong>Gross Revenue:</strong> $32,790.00</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Host Listings</h3>
-      <div class="card">
-        <p><strong>Host:</strong> john@camperlife.com</p>
-        <p><strong>Camper:</strong> 2021 Jayco Bunkhouse - Red River Gorge</p>
-        <button class="btn">View Listing</button>
-      </div>
-      <div class="card">
-        <p><strong>Host:</strong> travelmom@gmail.com</p>
-        <p><strong>Camper:</strong> 2020 Wildwood - Lake Cumberland</p>
-        <button class="btn">View Listing</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Recent Bookings</h3>
-      <div class="card">
-        <p><strong>Guest:</strong> ashley.m@email.com</p>
-        <p><strong>Location:</strong> Cave Run Lake</p>
-        <p><strong>Dates:</strong> Aug 10 - Aug 12</p>
-        <p><strong>Status:</strong> Confirmed</p>
-      </div>
-      <div class="card">
-        <p><strong>Guest:</strong> huntercamping@aol.com</p>
-        <p><strong>Location:</strong> Breaks Interstate Park</p>
-        <p><strong>Dates:</strong> Aug 15 - Aug 17</p>
-        <p><strong>Status:</strong> Pending</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Admin Tools</h3>
+      <h2>📊 Dashboard Overview</h2>
       <ul>
-        <li>📊 User Management (coming soon)</li>
-        <li>💬 Review Flagged Messages</li>
-        <li>📆 View All Booking Calendars</li>
-        <li>💰 Stripe Payout Reports</li>
-        <li>🔧 Platform Settings</li>
+        <li>Total Listings: 120</li>
+        <li>Active: 95 | Pending: 15 | Draft: 10</li>
+        <li>Total Hosts: 38</li>
+        <li>Guest Bookings This Month: 210</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>⏳ Pending Listings</h2>
+      <div class="card">
+        <h3>2023 Keystone Springdale</h3>
+        <p>Owner: Sarah T. | Campground: Red River Gorge</p>
+        <button class="btn">Approve</button>
+        <button class="btn">Contact Owner</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📝 Draft Listings</h2>
+      <div class="card">
+        <h3>2022 Forest River Salem</h3>
+        <p>Owner started listing but hasn’t submitted yet.</p>
+        <button class="btn">Send Reminder</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>💵 Stripe Setup Tracker</h2>
+      <ul>
+        <li>✅ 30 Hosts connected to Stripe</li>
+        <li>⚠️ 8 Hosts incomplete</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🗒️ Internal Notes & CRM</h2>
+      <div class="card">
+        <h3>Chris D. (Host - KY)</h3>
+        <p>Interested in listing 3 units next month. Needs call back 7/25.</p>
+        <button class="btn">Add Note</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>👥 Admin User Access</h2>
+      <ul>
+        <li>Jordan N. - Super Admin</li>
+        <li>Kelly R. - Sales Rep – East Region</li>
+        <li>Mike D. - Support Agent – Kentucky</li>
+        <li><button class="btn">Add New Admin</button></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧰 Power Tools</h2>
+      <ul>
+        <li><button class="btn">Create Promo Code</button></li>
+        <li><button class="btn">Launch Email Campaign</button></li>
+        <li><button class="btn">Tag Listings (Pet Friendly, Family, etc)</button></li>
       </ul>
     </div>
   </div>
 </body>
 </html>
-
-     
-     
-       
