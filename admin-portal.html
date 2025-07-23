@@ -73,39 +73,32 @@
     <div class="section">
       <h2>📊 Dashboard Overview</h2>
       <ul>
-        <li>Total Listings: 120</li>
-        <li>Active: 95 | Pending: 15 | Draft: 10</li>
-        <li>Total Hosts: 38</li>
-        <li>Guest Bookings This Month: 210</li>
+      <ul id="dashboard-stats">
+  <li>Loading...</li>
+</ul>
+
       </ul>
     </div>
 
-    <div class="section">
-      <h2>⏳ Pending Listings</h2>
-      <div class="card">
-        <h3>2023 Keystone Springdale</h3>
-        <p>Owner: Sarah T. | Campground: Red River Gorge</p>
-        <button class="btn">Approve</button>
-        <button class="btn">Contact Owner</button>
-      </div>
-    </div>
+   <div class="section">
+  <h2>⏳ Pending Listings</h2>
+  <div id="pending-listings">Loading pending listings...</div>
+</div>
 
-    <div class="section">
-      <h2>📝 Draft Listings</h2>
-      <div id="notes-list">Loading notes...</div>
 
-        <h3>2022 Forest River Salem</h3>
-        <p>Owner started listing but hasn’t submitted yet.</p>
-        <button class="btn">Send Reminder</button>
-      </div>
+<div class="section">
+  <h2>📝 Draft Listings</h2>
+  <div id="draft-listings">Loading draft listings...</div>
+</div>
+
     </div>
 
     <div class="section">
       <h2>💵 Stripe Setup Tracker</h2>
-      <ul>
-        <li>✅ 30 Hosts connected to Stripe</li>
-        <li>⚠️ 8 Hosts incomplete</li>
-      </ul>
+      <ul id="stripe-status">
+  <li>Loading Stripe info...</li>
+</ul>
+
     </div>
 
     <div class="section">
@@ -134,10 +127,13 @@
         <li><button class="btn">Create Promo Code</button></li>
         <li><button class="btn">Launch Email Campaign</button></li>
         <li><button class="btn">Tag Listings (Pet Friendly, Family, etc)</button></li>
+        <button class="btn" id="add-note-btn">Add Note</button>
+
       </ul>
     </div>
   </div>
   <script>
+    const supabase = supabase.createClient('https://your-project.supabase.co', 'your-anon-public-key');
    const supabase = supabase.createClient(
   'https://vqoirfycaqbaknfetdxj.supabase.co',
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
