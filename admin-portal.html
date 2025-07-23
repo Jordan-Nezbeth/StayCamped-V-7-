@@ -227,6 +227,26 @@
 
   // Load the listings on page load
   loadListings();
+    document.getElementById('add-note-btn').addEventListener('click', async () => {
+  const subject = prompt("Enter note subject:");
+  const content = prompt("Enter note content:");
+
+  if (!subject || !content) {
+    alert("Note not added. Both fields are required.");
+    return;
+  }
+
+  const { error } = await supabase.from('Admin_Notes').insert([{ subject, content }]);
+
+  if (error) {
+    alert("Failed to add note.");
+    console.error(error);
+  } else {
+    alert("Note added!");
+    location.reload();
+  }
+});
+
 </script>
 
 </body>
