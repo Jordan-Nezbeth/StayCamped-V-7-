@@ -133,11 +133,10 @@
     </div>
   </div>
   <script>
-    const supabase = supabase.createClient('https://your-project.supabase.co', 'your-anon-public-key');
-   const supabase = supabase.createClient(
-  'https://vqoirfycaqbaknfetdxj.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
-);
+  const supabase = supabase.createClient(
+    'https://vqoirfycaqbaknfetdxj.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
+  );
 
   async function loadListings() {
     const { data, error } = await supabase.from('Camper_Listings').select('*');
@@ -204,50 +203,30 @@
         alert(`Owner: ${data.owner_name}\nEmail: ${data.owner_email}\nPhone: ${data.owner_phone}`);
       }
     }
+
+    if (e.target.id === 'add-note-btn') {
+      const subject = prompt("Enter note subject:");
+      const content = prompt("Enter note content:");
+
+      if (!subject || !content) {
+        alert("Note not added. Both fields are required.");
+        return;
+      }
+
+      const { error } = await supabase.from('Admin_Notes').insert([{ subject, content }]);
+      if (error) {
+        alert("Failed to add note.");
+        console.error(error);
+      } else {
+        alert("Note added!");
+        location.reload();
+      }
+    }
   });
 
-  // CRM Note System (already in your file)
-  document.getElementById('add-note-btn').addEventListener('click', async () => {
-    const subject = prompt("Enter note subject:");
-    const content = prompt("Enter note content:");
-    if (!subject || !content) {
-      alert("Note not added. Both fields are required.");
-      return;
-    }
-
-    const { error } = await supabase.from('Admin_Notes').insert([{ subject, content }]);
-    if (error) {
-      alert("Failed to add note.");
-      console.error(error);
-    } else {
-      alert("Note added!");
-      location.reload();
-    }
-  });
-
-  // Load the listings on page load
   loadListings();
-    document.getElementById('add-note-btn').addEventListener('click', async () => {
-  const subject = prompt("Enter note subject:");
-  const content = prompt("Enter note content:");
-
-  if (!subject || !content) {
-    alert("Note not added. Both fields are required.");
-    return;
-  }
-
-  const { error } = await supabase.from('Admin_Notes').insert([{ subject, content }]);
-
-  if (error) {
-    alert("Failed to add note.");
-    console.error(error);
-  } else {
-    alert("Note added!");
-    location.reload();
-  }
-});
-
 </script>
+
 
 </body>
 </html>
