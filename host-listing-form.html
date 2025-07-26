@@ -100,16 +100,20 @@
         stripe_connected: false
       };
 
-      const { error } = await supabase.from('Camper_listings').insert([listing]);
+   const { error } = await supabase.from('Camper_Listings').insert([
+  {
+    owner_name: formData.get('owner_name'),
+    camper_model: formData.get('camper_model'),
+    campground: formData.get('campground'),
+    site_number: formData.get('site_number'),
+    setup_notes: formData.get('setup_notes'),
+    owner_email: formData.get('owner_email'),
+    owner_phone: formData.get('owner_phone'),
+    status: 'pending',
+    stripe_connected: false
+  }
+]);
 
-      if (error) {
-        alert('Error submitting listing');
-        console.error(error);
-      } else {
-        alert('Camper listing submitted successfully!');
-        e.target.reset();
-      }
-    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
