@@ -95,13 +95,11 @@
     </div>
 
     <div class="section">
-      <h2>🗒️ Internal Notes & CRM</h2>
-      <div class="card">
-        <h3>Chris D. (Host - KY)</h3>
-        <p>Interested in listing 3 units next month. Needs call back 7/25.</p>
-        <button class="btn" id="add-note-btn">Add Note</button>
-      </div>
-    </div>
+  <h2>🗒️ Internal Notes & CRM</h2>
+  <div id="admin-notes">Loading notes...</div>
+  <button class="btn" id="add-note-btn">Add Note</button>
+</div>
+
 
     <div class="section">
       <h2>👥 Admin User Access</h2>
@@ -176,6 +174,31 @@
         <li>✅ ${stripeConnected.length} Hosts connected to Stripe</li>
         <li>⚠️ ${stripeIncomplete.length} Hosts incomplete</li>`;
     }
+async function loadNotes() {
+  const { data, error } = await supabase
+    .from('Admin_Notes')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Failed to load notes:', error);
+    document.getElementById('admin-notes').innerText = 'Failed to load notes.';
+    return;
+  }
+
+  if (data.length === 0) {
+    document.getElementById('admin-notes').innerHTML = '<p>No notes yet.</p>';
+    return;
+  }
+
+  document.getElementById('admin-notes').innerHTML = data.map(note => `
+    <div class="card">
+      <h3>${note.subject}</h3>
+      <p>${note.content}</p>
+      <small style="color:gray;">Created: ${new Date(note.created_at).toLocaleString()}</small>
+    </div>
+  `).join('');
+}
 
     document.addEventListener('click', async (e) => {
       if (e.target.classList.contains('approve-btn')) {
@@ -224,6 +247,8 @@
     });
 
     loadListings();
+    loadNotes();
+
   </script>
 </body>
 </html>
