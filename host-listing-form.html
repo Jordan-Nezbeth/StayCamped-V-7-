@@ -100,7 +100,7 @@
         stripe_connected: false
       };
 
-      const { error } = await supabase.from('Camper_Listings').insert([listing]);
+      const { error } = await supabase.from('Camper_listings').insert([listing]);
 
       if (error) {
         alert('Error submitting listing');
@@ -133,7 +133,7 @@
       stripe_connected: false
     };
 
-    const { error } = await supabase.from('Camper_Listings').insert([camperData]);
+    const { error } = await supabase.from('Camper_listings').insert([camperData]);
 
     const responseDiv = document.getElementById('form-response');
     if (error) {
