@@ -72,33 +72,26 @@
   <div class="admin-dashboard">
     <div class="section">
       <h2>📊 Dashboard Overview</h2>
-      <ul>
       <ul id="dashboard-stats">
-  <li>Loading...</li>
-</ul>
-
-  
+        <li>Loading...</li>
+      </ul>
     </div>
 
-   <div class="section">
-  <h2>⏳ Pending Listings</h2>
-  <div id="pending-listings">Loading pending listings...</div>
-</div>
+    <div class="section">
+      <h2>⏳ Pending Listings</h2>
+      <div id="pending-listings">Loading pending listings...</div>
+    </div>
 
-
-<div class="section">
-  <h2>📝 Draft Listings</h2>
-  <div id="draft-listings">Loading draft listings...</div>
-</div>
-
+    <div class="section">
+      <h2>📝 Draft Listings</h2>
+      <div id="draft-listings">Loading draft listings...</div>
     </div>
 
     <div class="section">
       <h2>💵 Stripe Setup Tracker</h2>
       <ul id="stripe-status">
-  <li>Loading Stripe info...</li>
-</ul>
-
+        <li>Loading Stripe info...</li>
+      </ul>
     </div>
 
     <div class="section">
@@ -107,7 +100,6 @@
         <h3>Chris D. (Host - KY)</h3>
         <p>Interested in listing 3 units next month. Needs call back 7/25.</p>
         <button class="btn" id="add-note-btn">Add Note</button>
-
       </div>
     </div>
 
@@ -127,110 +119,106 @@
         <li><button class="btn">Create Promo Code</button></li>
         <li><button class="btn">Launch Email Campaign</button></li>
         <li><button class="btn">Tag Listings (Pet Friendly, Family, etc)</button></li>
-        <!-- Removed duplicate ID -->
-<button class="btn">Add Note</button>
-
-
       </ul>
     </div>
   </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/dist/umd/supabase.min.js"></script>
+
+  <!-- ✅ CORRECT Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/dist/umd/supabase.min.js"></script>
 
   <script>
-  const supabase = supabase.createClient(
-    'https://vqoirfycaqbaknfetdxj.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
-  );
+    const supabase = supabase.createClient(
+      'https://vqoirfycaqbaknfetdxj.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
+    );
 
-  async function loadListings() {
-    const { data, error } = await supabase.from('Camper_Listings').select('*');
-    if (error) {
-      console.error('Error loading listings:', error);
-      return;
-    }
-
-    const pending = data.filter(item => item.status === 'pending');
-    const draft = data.filter(item => item.status === 'draft');
-    const stripeConnected = data.filter(item => item.stripe_connected === true);
-    const stripeIncomplete = data.filter(item => item.stripe_connected === false);
-
-    document.getElementById('dashboard-stats').innerHTML = `
-      <li>Total Listings: ${data.length}</li>
-      <li>Active: ${data.filter(x => x.status === 'active').length} | Pending: ${pending.length} | Draft: ${draft.length}</li>
-      <li>Total Hosts: TBD</li>
-      <li>Guest Bookings This Month: TBD</li>`;
-
-    document.getElementById('pending-listings').innerHTML = pending.map(p => `
-      <div class="card">
-        <h3>${p.camper_model}</h3>
-        <p>Location: ${p.campground}</p>
-        <button class="btn approve-btn" data-id="${p.id}">Approve</button>
-        <button class="btn contact-btn" data-id="${p.id}">Contact Owner</button>
-      </div>
-    `).join('');
-
-    document.getElementById('draft-listings').innerHTML = draft.map(d => `
-      <div class="card">
-        <h3>${d.camper_model}</h3>
-        <p>Owner started listing but hasn’t submitted yet.</p>
-        <button class="btn">Send Reminder</button>
-      </div>
-    `).join('');
-
-    document.getElementById('stripe-status').innerHTML = `
-      <li>✅ ${stripeConnected.length} Hosts connected to Stripe</li>
-      <li>⚠️ ${stripeIncomplete.length} Hosts incomplete</li>`;
-  }
-
-  document.addEventListener('click', async (e) => {
-    if (e.target.classList.contains('approve-btn')) {
-      const id = e.target.getAttribute('data-id');
-      const { error } = await supabase.from('Camper_Listings').update({ status: 'active' }).eq('id', id);
+    async function loadListings() {
+      const { data, error } = await supabase.from('Camper_Listings').select('*');
       if (error) {
-        alert('Failed to approve listing.');
-      } else {
-        alert('Listing approved!');
-        loadListings();
-      }
-    }
-
-    if (e.target.classList.contains('contact-btn')) {
-      const id = e.target.getAttribute('data-id');
-      const { data, error } = await supabase
-        .from('Camper_Listings')
-        .select('owner_name, owner_email, owner_phone')
-        .eq('id', id)
-        .single();
-      if (error || !data) {
-        alert('Contact info not found.');
-      } else {
-        alert(`Owner: ${data.owner_name}\nEmail: ${data.owner_email}\nPhone: ${data.owner_phone}`);
-      }
-    }
-
-    if (e.target.id === 'add-note-btn') {
-      const subject = prompt("Enter note subject:");
-      const content = prompt("Enter note content:");
-
-      if (!subject || !content) {
-        alert("Note not added. Both fields are required.");
+        console.error('Error loading listings:', error);
         return;
       }
 
-      const { error } = await supabase.from('Admin_Notes').insert([{ subject, content }]);
-      if (error) {
-        alert("Failed to add note.");
-        console.error(error);
-      } else {
-        alert("Note added!");
-        location.reload();
-      }
+      const pending = data.filter(item => item.status === 'pending');
+      const draft = data.filter(item => item.status === 'draft');
+      const stripeConnected = data.filter(item => item.stripe_connected === true);
+      const stripeIncomplete = data.filter(item => item.stripe_connected === false);
+
+      document.getElementById('dashboard-stats').innerHTML = `
+        <li>Total Listings: ${data.length}</li>
+        <li>Active: ${data.filter(x => x.status === 'active').length} | Pending: ${pending.length} | Draft: ${draft.length}</li>
+        <li>Total Hosts: TBD</li>
+        <li>Guest Bookings This Month: TBD</li>`;
+
+      document.getElementById('pending-listings').innerHTML = pending.map(p => `
+        <div class="card">
+          <h3>${p.camper_model}</h3>
+          <p>Location: ${p.campground}</p>
+          <button class="btn approve-btn" data-id="${p.id}">Approve</button>
+          <button class="btn contact-btn" data-id="${p.id}">Contact Owner</button>
+        </div>
+      `).join('');
+
+      document.getElementById('draft-listings').innerHTML = draft.map(d => `
+        <div class="card">
+          <h3>${d.camper_model}</h3>
+          <p>Owner started listing but hasn’t submitted yet.</p>
+          <button class="btn">Send Reminder</button>
+        </div>
+      `).join('');
+
+      document.getElementById('stripe-status').innerHTML = `
+        <li>✅ ${stripeConnected.length} Hosts connected to Stripe</li>
+        <li>⚠️ ${stripeIncomplete.length} Hosts incomplete</li>`;
     }
-  });
 
-  loadListings();
-</script>
+    document.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('approve-btn')) {
+        const id = e.target.getAttribute('data-id');
+        const { error } = await supabase.from('Camper_Listings').update({ status: 'active' }).eq('id', id);
+        if (error) {
+          alert('Failed to approve listing.');
+        } else {
+          alert('Listing approved!');
+          loadListings();
+        }
+      }
 
+      if (e.target.classList.contains('contact-btn')) {
+        const id = e.target.getAttribute('data-id');
+        const { data, error } = await supabase
+          .from('Camper_Listings')
+          .select('owner_name, owner_email, owner_phone')
+          .eq('id', id)
+          .single();
+        if (error || !data) {
+          alert('Contact info not found.');
+        } else {
+          alert(`Owner: ${data.owner_name}\nEmail: ${data.owner_email}\nPhone: ${data.owner_phone}`);
+        }
+      }
 
+      if (e.target.id === 'add-note-btn') {
+        const subject = prompt("Enter note subject:");
+        const content = prompt("Enter note content:");
+
+        if (!subject || !content) {
+          alert("Note not added. Both fields are required.");
+          return;
+        }
+
+        const { error } = await supabase.from('Admin_Notes').insert([{ subject, content }]);
+        if (error) {
+          alert("Failed to add note.");
+          console.error(error);
+        } else {
+          alert("Note added!");
+          location.reload();
+        }
+      }
+    });
+
+    loadListings();
+  </script>
 </body>
 </html>
