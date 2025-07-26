@@ -119,19 +119,24 @@
         <li><button class="btn">Create Promo Code</button></li>
         <li><button class="btn">Launch Email Campaign</button></li>
         <li><button class="btn">Tag Listings (Pet Friendly, Family, etc)</button></li>
+        <li><button class="btn" id="add-note-btn">Add Note</button></li>
       </ul>
     </div>
   </div>
 
-  <!-- ✅ CORRECT Supabase SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/dist/umd/supabase.min.js"></script>
+  <!-- ✅ Load Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+  <!-- ✅ Initialize Supabase Client -->
   <script>
     const supabase = supabase.createClient(
       'https://vqoirfycaqbaknfetdxj.supabase.co',
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
     );
+  </script>
 
+  <!-- ✅ Main Script Logic -->
+  <script>
     async function loadListings() {
       const { data, error } = await supabase.from('Camper_Listings').select('*');
       if (error) {
