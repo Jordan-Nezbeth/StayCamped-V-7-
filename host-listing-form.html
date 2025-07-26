@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>List Your Camper | StayCamped</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    form {
+      background: #2a2a2a;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+    .btn {
+      background-color: #ffa500;
+      color: #1a1a1a;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛻 List Your Camper</h1>
+  <form id="listing-form">
+    <label>Camper Model:
+      <input type="text" name="camper_model" required />
+    </label>
+    <label>Description:
+      <textarea name="description" required></textarea>
+    </label>
+    <label>Campground or Location:
+      <input type="text" name="campground" required />
+    </label>
+    <label>Amenities (comma-separated):
+      <input type="text" name="amenities" placeholder="Chairs, Firewood, Water, etc" />
+    </label>
+    <label>Nightly Price ($):
+      <input type="number" name="price" required />
+    </label>
+    <label>Upload Photos:
+      <input type="file" name="photos" multiple />
+    </label>
+    <button type="submit" class="btn">Submit Listing</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabase = supabase.createClient(
+      'https://vqoirfycaqbaknfetdxj.supabase.co',
+      const supabase = supabase.createClient(
+  'https://vqoirfycaqbaknfetdxj.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
+);
+
+    );
+
+    document.getElementById('listing-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const listing = {
+        camper_model: formData.get('camper_model'),
+        description: formData.get('description'),
+        campground: formData.get('campground'),
+        amenities: formData.get('amenities'),
+        price: parseFloat(formData.get('price')),
+        status: 'draft',
+        stripe_connected: false
+      };
+
+      const { error } = await supabase.from('Camper_Listings').insert([listing]);
+
+      if (error) {
+        alert('Error submitting listing');
+        console.error(error);
+      } else {
+        alert('Camper listing submitted successfully!');
+        e.target.reset();
+      }
+    });
+  </script>
+</body>
+</html>
