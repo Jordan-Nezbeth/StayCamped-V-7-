@@ -40,6 +40,17 @@
       cursor: pointer;
     }
   </style>
+  <form id="listing-form">
+  <input type="text" id="owner_name" placeholder="Your Name" required />
+  <input type="email" id="owner_email" placeholder="Your Email" required />
+  <input type="text" id="owner_phone" placeholder="Phone Number" required />
+  <input type="text" id="camper_model" placeholder="Camper Model" required />
+  <input type="text" id="campground" placeholder="Campground Name" required />
+  <textarea id="camper_description" placeholder="Description"></textarea>
+  <button type="submit" class="btn">Submit Listing</button>
+</form>
+<div id="form-response"></div>
+
 </head>
 <body>
   <h1>🛻 List Your Camper</h1>
@@ -100,5 +111,40 @@
       }
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const supabase = supabase.createClient(
+    'https://vqoirfycaqbaknfetdxj.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
+  );
+
+  const form = document.getElementById('listing-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const camperData = {
+      owner_name: document.getElementById('owner_name').value,
+      owner_email: document.getElementById('owner_email').value,
+      owner_phone: document.getElementById('owner_phone').value,
+      camper_model: document.getElementById('camper_model').value,
+      campground: document.getElementById('campground').value,
+      camper_description: document.getElementById('camper_description').value,
+      status: 'pending',
+      stripe_connected: false
+    };
+
+    const { error } = await supabase.from('Camper_Listings').insert([camperData]);
+
+    const responseDiv = document.getElementById('form-response');
+    if (error) {
+      responseDiv.innerText = "Failed to submit listing.";
+      console.error(error);
+    } else {
+      responseDiv.innerText = "✅ Camper listing submitted!";
+      form.reset();
+    }
+  });
+</script>
+
 </body>
 </html>
