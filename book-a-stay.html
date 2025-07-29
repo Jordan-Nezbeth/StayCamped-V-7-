@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book a Stay - StayCamped</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     body {
       margin: 0;
@@ -15,7 +13,7 @@
       color: #fff;
     }
     header {
-      background: #262626;
+      background-color: #262626;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -24,213 +22,104 @@
     header img {
       height: 50px;
     }
-    nav a {
-      color: #ffa500;
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
     }
-    .hero {
-      background: url('campground-hero.jpg') center/cover no-repeat;
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    h1, h2 {
       color: #ffa500;
     }
-    .hero p {
-      font-size: 1.2rem;
+    .campground-links, .camper-booking-section {
+      background: #2a2a2a;
+      padding: 1.5rem;
       margin-bottom: 2rem;
+      border-radius: 8px;
     }
-    .cta-btn {
-      background-color: #ffa500;
+    .btn {
+      background: #ffa500;
       color: #1a1a1a;
       border: none;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      font-weight: bold;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
       cursor: pointer;
-      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
     }
-    .section {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
+    ul {
+      list-style-type: none;
+      padding: 0;
     }
-    .features, .steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: space-between;
-    }
-    .feature, .step {
-      background: #2a2a2a;
-      padding: 1rem;
-      border-radius: 8px;
-      flex: 1;
-      min-width: 220px;
-    }
-    .section h2 {
+    li a {
       color: #ffa500;
-      margin-bottom: 1rem;
+      text-decoration: none;
     }
-    .testimonial, .listing-card {
-      background: #333;
-      border-radius: 6px;
-      padding: 1rem;
-      margin-bottom: 1rem;
+    li a:hover {
+      text-decoration: underline;
     }
-    .listing-card img {
-      width: 100%;
-      border-radius: 4px;
-    }
-    .search-bar {
-      background: #2a2a2a;
-      padding: 1rem;
+    .optional-section {
+      background-color: #2a2a2a;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
       border-radius: 8px;
-      margin: 2rem auto;
-      max-width: 800px;
     }
-    .search-bar input, .search-bar select {
+    .optional-section label, .optional-section textarea, .optional-section select {
+      display: block;
+      margin: 0.5rem 0;
       width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 4px;
       border: none;
-      border-radius: 4px;
     }
-    .secure {
-      text-align: center;
-      padding: 2rem;
-      background: #2f2f2f;
-      border-radius: 8px;
-    }
-    .bottom-cta {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: #262626;
-    }
-    #map {
-      height: 500px;
-      border-radius: 8px;
-      margin-top: 2rem;
+    .optional-section textarea {
+      height: 100px;
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html"><img src="logo.png" alt="StayCamped Logo"></a>
-    <nav>
-      <a href="book-a-stay.html">Book a Stay</a>
-      <a href="owner-signup.html">Become a Host</a>
-      <a href="guest-portal.html">Login</a>
-    </nav>
+    <a href="index.html"><img src="logo.png" alt="StayCamped Logo" /></a>
+    <h2>Book a Stay</h2>
   </header>
 
-  <div class="hero">
-    <h1>Don’t Tow. Don’t Stress. Just Arrive. Relax. StayCamped.</h1>
-    <p>Book a fully set-up camper at your favorite campground today.</p>
-    <button class="cta-btn">🔍 Search Stays</button>
+  <div class="container">
+    <h1>Let’s Plan Your Perfect Camping Trip!</h1>
+    <p>Follow these easy steps to get started:</p>
+
+    <div class="campground-links">
+      <h2>⛺ Step 1: Book Your Campsite</h2>
+      <p>Find a campsite nearby through one of these trusted sources:</p>
+      <ul>
+        <li><a href="https://www.recreation.gov" target="_blank">Recreation.gov</a></li>
+        <li><a href="https://www.campspot.com" target="_blank">CampSpot.com</a></li>
+        <li><a href="https://www.reserveamerica.com" target="_blank">ReserveAmerica.com</a></li>
+        <li><a href="https://www.hipcamp.com" target="_blank">Hipcamp.com</a></li>
+        <li><a href="https://www.stateparks.com" target="_blank">Find Your State Parks</a></li>
+      </ul>
+      <p><strong>Pro Tip:</strong> Open these in a new tab so you can come back here to complete your camper booking!</p>
+    </div>
+
+    <div class="optional-section">
+      <h2>📍 Step 1.5: Tell Us Your Site</h2>
+      <label for="site-location">Optional: Enter the name or link to the campground where you'd like your camper delivered:</label>
+      <textarea id="site-location" placeholder="Example: Green River Lake State Park, Site 34 OR paste a booking link..."></textarea>
+      <label for="pickup-option">Or select if you want to pick up the camper yourself:</label>
+      <select id="pickup-option">
+        <option value="">-- Select Option --</option>
+        <option value="pickup">I will pick up the camper myself</option>
+        <option value="delivery">Please deliver to my site above</option>
+      </select>
+    </div>
+
+    <div class="camper-booking-section">
+      <h2>🚐 Step 2: Book Your Camper</h2>
+      <p>Browse featured campers available to book at your chosen location:</p>
+      <!-- Camper listings will be dynamically loaded here -->
+      <div id="camper-listings">Loading featured listings...</div>
+    </div>
   </div>
 
-  <section class="section">
-    <h2>✅ Why StayCamped?</h2>
-    <div class="features">
-      <div class="feature">✅ No towing required</div>
-      <div class="feature">✅ Campers delivered and set up for you</div>
-      <div class="feature">✅ Stay at real campgrounds</div>
-      <div class="feature">✅ Affordable, easy, memorable</div>
-    </div>
-    <p>Whether you’re a first-timer or a seasoned adventurer, StayCamped makes camping easy, accessible, and unforgettable — no truck or setup needed.</p>
-  </section>
-
-  <section class="section">
-    <h2>📍 Search Listings by Location</h2>
-    <div class="search-bar">
-      <input type="text" placeholder="Location or Zip Code">
-      <input type="date" placeholder="Arrival Date">
-      <input type="date" placeholder="Departure Date">
-      <input type="number" placeholder="Number of Guests">
-      <select><option>Pet Friendly?</option><option>Yes</option><option>No</option></select>
-      <input type="text" placeholder="Campground (optional)">
-      <button class="cta-btn">Search</button>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>🗺️ Campground Map</h2>
-    <div id="map"></div>
-  </section>
-
-  <section class="section">
-    <h2>🌟 Featured Campers & Experiences</h2>
-    <div class="listing-card">
-      <img src="camper1.jpg" alt="Camper">
-      <h3>2021 Jayco Bunkhouse – Yatesville Lake</h3>
-      <p>$129/night • ⭐ 4.9</p>
-      <button class="btn">View Details</button>
-    </div>
-    <div class="listing-card">
-      <img src="camper2.jpg" alt="Camper">
-      <h3>2020 Forest River Wildwood – Red River Gorge</h3>
-      <p>$109/night • ⭐ 4.8</p>
-      <button class="btn">View Details</button>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>💬 What Guests Are Saying</h2>
-    <div class="testimonial">
-      <p>“It was the easiest trip we’ve ever taken. Showed up, campfire was ready, fridge was cold, beds were made!” – Ashley M.</p>
-    </div>
-    <div class="testimonial">
-      <p>“I always wanted to take the kids camping but didn’t know how. StayCamped made it happen.” – Travis H.</p>
-    </div>
-  </section>
-
-  <section class="section steps">
-    <div class="step">
-      <h3>1. Find Your Camper</h3>
-      <p>Choose from locations, dates, and preferences.</p>
-    </div>
-    <div class="step">
-      <h3>2. Book Online</h3>
-      <p>We handle the setup. You relax.</p>
-    </div>
-    <div class="step">
-      <h3>3. Arrive & Enjoy</h3>
-      <p>Everything’s ready. Just show up and unwind.</p>
-    </div>
-  </section>
-
-  <section class="secure">
-    <p>🔐 Secure checkout powered by <strong>Stripe</strong>. No hidden fees.</p>
-  </section>
-
-  <section class="bottom-cta">
-    <h2>“Let the campfire stories begin.”</h2>
-    <button class="cta-btn">📍 Find Your Stay Now</button>
-  </section>
-
-  <script>
-    var map = L.map('map').setView([37.8, -96], 4); // Centered in USA
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Sample campground pins (can replace later with Supabase listings)
-    const campgrounds = [
-      { name: "Red River Gorge", lat: 37.82, lng: -83.68 },
-      { name: "Yatesville Lake", lat: 38.04, lng: -82.72 },
-      { name: "Cave Run Lake", lat: 38.13, lng: -83.51 }
-    ];
-
-    campgrounds.forEach(camp => {
-      L.marker([camp.lat, camp.lng]).addTo(map)
-        .bindPopup(`<strong>${camp.name}</strong>`);
-    });
-  </script>
+  <script src="scripts/loadListings.js"></script>
 </body>
 </html>
