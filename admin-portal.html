@@ -134,7 +134,9 @@
   </script>
 
   <!-- ✅ Main Script Logic -->
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+ <script>
     async function loadListings() {
       const { data, error } = await supabase.from('Camper_Listings').select('*');
       if (error) {
