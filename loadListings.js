@@ -1,37 +1,27 @@
-// ✅ scripts/loadListings.js
+// loadListings.js
 
-const supabase = supabase.createClient(
-  'https://vqoirfycaqbaknfetdxj.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
-);
+// Import Supabase client from CDN
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-async function loadListings() {
-  const { data, error } = await supabase.from('Camper_Listing').select('*'); // ✅ Fixed table name
+// === Supabase Project Info ===
+// Replace the key below with YOUR actual anon key from Supabase
+const supabaseUrl = 'https://vqoirfycaqbaknfetdxj.supabase.co'
+const supabaseAnonKey = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204
+
+// Create Supabase client
+const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+// Function to load camper listings
+export async function loadListings() {
+  const { data, error } = await supabase
+    .from('Camper_Listing')
+    .select('*')
+    .eq('status', 'approved')
 
   if (error) {
-    console.error('Error loading listings:', error);
-    document.getElementById('camper-listings').innerHTML = `<p style="color: red;">Failed to load listings.</p>`;
-    return;
+    console.error('Error loading listings from Supabase:', error)
+    return []
   }
 
-  if (!data || data.length === 0) {
-    document.getElementById('camper-listings').innerHTML = `<p>No listings available yet. Please check back soon!</p>`;
-    return;
-  }
-
-  const listingHtml = data.map(item => `
-    <div class="card">
-      <h3>${item.camper_model || 'Untitled Camper'}</h3>
-      <p><strong>Location:</strong> ${item.campground || 'Not specified'}</p>
-      <p><strong>Description:</strong> ${item.description || 'No description provided.'}</p>
-      <p><strong>Amenities:</strong> ${item.amenities || 'Standard'}</p>
-      <p><strong>Price per Night:</strong> $${item.price_per_night || 'TBD'}</p>
-      <p><strong>Available Dates:</strong> TBD (Calendar Coming Soon!)</p>
-      <button class="btn">Request to Book</button>
-    </div>
-  `).join('');
-
-  document.getElementById('camper-listings').innerHTML = listingHtml;
+  return data
 }
-
-loadListings();
