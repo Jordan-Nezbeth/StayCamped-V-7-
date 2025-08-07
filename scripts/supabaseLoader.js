@@ -1,9 +1,9 @@
-// ✅ loadListings-fixed.js
+// ✅ supabaseLoader.js
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
 const supabaseUrl = 'https://vqoirfycaqbaknfetdxj.supabase.co'
-const supabaseAnonKey = 'YOUR_REAL_ANON_KEY_HERE' // replace with your real key
+const supabaseAnonKey = 'YOUR_REAL_ANON_KEY' // replace this line
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
