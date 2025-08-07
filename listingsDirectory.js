@@ -1,4 +1,5 @@
-import { loadListings } from './loadListings.js'
+import { loadListings } from './loadListings-fixed.js'
+
 
 document.addEventListener('DOMContentLoaded', async () => {
   const container = document.getElementById('listing-container')
