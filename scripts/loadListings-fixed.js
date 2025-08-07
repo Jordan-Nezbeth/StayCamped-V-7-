@@ -1,36 +1,22 @@
-// ✅ Load camper listings dynamically from Supabase
+// ✅ loadListings-fixed.js
 
-// Use your new anon key here (not the leaked one)
-const supabase = supabase.createClient(
-  'https://vqoirfycaqbaknfetdxj.supabase.co',
-  'YOUR-NEW-ANON-KEY-HERE'
-);
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-async function loadFeaturedListings() {
+const supabaseUrl = 'https://vqoirfycaqbaknfetdxj.supabase.co'
+const supabaseAnonKey = 'YOUR_REAL_ANON_KEY_HERE' // replace with your real key
+
+const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+export async function loadListings() {
   const { data, error } = await supabase
-    .from('Camper_Listings')
+    .from('Camper_Listing')
     .select('*')
-    .eq('status', 'active')
-    .limit(10);
+    .eq('status', 'approved')
 
-  const container = document.getElementById('camper-listings');
-
-  if (error || !data || data.length === 0) {
-    container.innerHTML = `<p>No listings available at the moment. Check back soon!</p>`;
-    return;
+  if (error) {
+    console.error('Error loading listings from Supabase:', error)
+    return []
   }
 
-  container.innerHTML = data
-    .map(listing => `
-      <div class="card">
-        <h3>${listing.camper_model}</h3>
-        <p><strong>Location:</strong> ${listing.campground}</p>
-        <p>${listing.description}</p>
-        <p><strong>Price:</strong> $${listing.price_per_night}/night</p>
-        <button class="btn">View Details</button>
-      </div>
-    `)
-    .join('');
+  return data
 }
-
-loadFeaturedListings();
