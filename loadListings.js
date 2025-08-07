@@ -5,7 +5,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 // 2. Initialize Supabase client AFTER importing
 const supabaseUrl = 'https://vqoirfycaqbaknfetdxj.supabase.co'
-const supabaseAnonKey = 'your_actual_anon_key_here'  // Replace this line with your real anon key
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
