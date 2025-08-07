@@ -1,17 +1,14 @@
-// loadListings.js
+// ✅ loadListings.js (clean and fixed)
 
-// Import Supabase client from CDN
+// ✅ 1. Import Supabase client from CDN
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-// === Supabase Project Info ===
-// Replace the key below with YOUR actual anon key from Supabase
+// ✅ 2. Initialize Supabase client
 const supabaseUrl = 'https://vqoirfycaqbaknfetdxj.supabase.co'
-const supabaseAnonKey = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204
-
-// Create Supabase client
+const supabaseAnonKey = 'YOUR_REAL_ANON_KEY_HERE' // 👈 Replace this
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Function to load camper listings
+// ✅ 3. Export function that loads camper listings
 export async function loadListings() {
   const { data, error } = await supabase
     .from('Camper_Listing')
@@ -19,9 +16,10 @@ export async function loadListings() {
     .eq('status', 'approved')
 
   if (error) {
-    console.error('Error loading listings from Supabase:', error)
+    console.error('Supabase Error:', error)
     return []
   }
 
   return data
 }
+
