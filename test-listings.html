@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Test Listings (Supabase)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body { background:#1a1a1a; color:#fff; font-family:Arial, sans-serif; margin:0; padding:24px; }
-    h1 { color:#ffa500; }
+    h1 { color:#ffa500; margin:0 0 12px; }
+    #out { margin-bottom:14px; opacity:0.9; }
     .grid { display:flex; flex-wrap:wrap; gap:16px; }
     .card { background:#2a2a2a; border-radius:10px; padding:12px; width:320px; }
-    .card img { width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:8px; }
+    .card img { width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:8px; background:#111; }
   </style>
 </head>
 <body>
@@ -19,51 +21,51 @@
   <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-    // 👉 Replace ONLY the anon key string below with your real anon key
-    const supabaseUrl ='https://vqoirfycaqbaknfetdxj.supabase.co'
-    const supabaseAnonkey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204'
+    // 🔧 CHANGE ONLY THE LINE BELOW: paste your real anon key between the quotes.
+    const supabaseUrl = 'https://vqoirfycaqbaknfetdxj.supabase.co';
+    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxb2lyZnljYXFiYWtuZmV0ZHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNzA5NDgsImV4cCI6MjA2Nzc0Njk0OH0.PJaoaaMQkQmBIdRQLPs7rYWzxivhQloOm2Gd6UTc204';
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
-    const out = document.getElementById('out')
-    const grid = document.getElementById('grid')
+    // --- Do not edit below this line ---
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const out = document.getElementById('out');
+    const grid = document.getElementById('grid');
 
     async function run() {
-      out.textContent = 'Contacting Supabase…'
+      out.textContent = 'Contacting Supabase…';
       const { data, error } = await supabase
         .from('Camper_Listing')
         .select('*')
-        .eq('status', 'approved')  // make sure your row's status is exactly "approved"
+        .eq('status', 'approved'); // ensure your row's status is exactly "approved"
 
       if (error) {
-        console.error('Supabase error:', error)
-        out.textContent = 'Error: ' + (error.message || JSON.stringify(error))
-        return
+        console.error('Supabase error:', error);
+        out.textContent = 'Error: ' + (error.message || JSON.stringify(error));
+        return;
       }
 
       if (!data || data.length === 0) {
-        out.textContent = 'No listings found (check status column or table).'
-        return
+        out.textContent = 'No listings found (check table/columns or status value).';
+        return;
       }
 
-      out.textContent = `Loaded ${data.length} listing(s).`
+      out.textContent = `Loaded ${data.length} listing(s).`;
 
       data.forEach((listing) => {
-        const card = document.createElement('div')
-        card.className = 'card'
+        const card = document.createElement('div');
+        card.className = 'card';
         card.innerHTML = `
           <img src="${listing.image_url || ''}" alt="${listing.camper_model || 'Camper'}" />
           <h3 style="margin:6px 0;color:#ffa500;">${listing.camper_model || 'Camper'}</h3>
           <div>${listing.campground || ''} ${listing.site_number ? '– Site ' + listing.site_number : ''}</div>
-        `
-        grid.appendChild(card)
-      })
+        `;
+        grid.appendChild(card);
+      });
     }
 
     run().catch(e => {
-      console.error(e)
-      out.textContent = 'Unexpected error: ' + e.message
-    })
+      console.error(e);
+      out.textContent = 'Unexpected error: ' + e.message;
+    });
   </script>
 </body>
 </html>
